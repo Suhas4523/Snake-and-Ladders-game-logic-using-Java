@@ -1,0 +1,56 @@
+import java.util.*;
+public class Main
+{
+    static Random rand = new Random();
+	public static void main(String[] args){
+		int pos = 1;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("You are at position : " +pos);
+		while(pos < 100){
+		System.out.println("Wanna spin the dice : ");
+		String s = sc.nextLine();
+		if(s.equals("yes"))
+		    pos = dice(pos);
+		}
+	}
+	public static int dice(int pos){
+	    int n = rand.nextInt(6) + 1;
+	    System.out.println("The Dice shows : "+n);
+	    pos += n;
+	    System.out.println("You are the position : " +pos);
+	    pos = snakeladder(pos);
+	    return pos;
+	}
+	public static int snakeladder(int pos){
+	    HashMap<Integer,Integer> snake = new HashMap<>();
+	    HashMap<Integer,Integer> ladder = new HashMap<>();
+	    snake.put(17,3);
+	    snake.put(45,15);
+	    snake.put(89,27);
+	    snake.put(56,22);
+	    snake.put(91,71);
+	    snake.put(99,2);
+	    ladder.put(9,17);
+	    ladder.put(45,63);
+	    ladder.put(81,92);
+	    ladder.put(21,39);
+	    ladder.put(60,75);
+	    for(Map.Entry<Integer,Integer> entry : snake.entrySet()){
+	        if(entry.getKey() == pos){
+	            pos = entry.getValue();
+	            System.out.println("Oh no!! A snake has caught you");
+	            System.out.println("You are now at : " +pos); 
+	            break;
+	        }
+	    }
+	    for(Map.Entry<Integer,Integer> entry : ladder.entrySet()){
+	        if(entry.getKey() == pos){
+	            pos = entry.getValue();
+	            System.out.println("NICEEEE!! YOu have found a ladder");
+	            System.out.println("You are now at : " +pos); 
+	            break;
+	        }
+	    }
+	    return pos;
+	}
+}
