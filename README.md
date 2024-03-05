@@ -1,0 +1,1 @@
+This repository only contains the logic for the game right now. I'm a bit new to software development so next i'll learn frontend development and try to create a frontend for the game. Feel free to contribute .
